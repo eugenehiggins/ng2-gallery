@@ -4,16 +4,18 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { NavbarHeaderComponent } from './components/navbar-header/navbar-header.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { JumbotronComponent } from './components/jumbotron/jumbotron.component';
+import { AlbumComponent } from './components/album/album.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarHeaderComponent,
     NavbarComponent,
-    JumbotronComponent
+    JumbotronComponent,
+    AlbumComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

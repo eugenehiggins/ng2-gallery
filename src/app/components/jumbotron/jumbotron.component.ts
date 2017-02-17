@@ -10,6 +10,7 @@ export class JumbotronComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }
