@@ -10,16 +10,20 @@ import { Art } from "../../models/art.model";
 export class JumbotronComponent implements OnInit {
 
     featured: Art;
+    x: any;
 
     constructor(private contentService: ContentService) {
+
     }
 
     ngOnInit() {
-        this.contentService.getFeatured().then()
+        //this.contentService.getFeatured().then()
+        //console.log(this.contentService.getFeatured())
+        this.contentService.getFeatured().subscribe( art => console.log(art))
+
+        this.contentService.setFeatured(5);
     }
 
-    getFeatured(): void {
 
-    }
 
 }
