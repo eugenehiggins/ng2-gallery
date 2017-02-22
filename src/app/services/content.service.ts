@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Art } from "../models/art.model";
 import { Observable } from 'rxjs';
+import { ART } from './mock-art';
 
 @Injectable()
 export class ContentService {
@@ -20,5 +21,9 @@ export class ContentService {
     setFeatured(value: number): void {
         this.featured.name = "number " + value;
         //return Observable.of(this.featured)
+    }
+
+    getArt(): Observable<Art[]> {
+        return Observable.of(ART);
     }
 }
