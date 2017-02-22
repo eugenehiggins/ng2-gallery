@@ -8,6 +8,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { JumbotronComponent } from './components/jumbotron/jumbotron.component';
 import { AlbumComponent } from './components/album/album.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ContentService } from "./services/content.service";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { FooterComponent } from './components/footer/footer.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+    ContentService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
