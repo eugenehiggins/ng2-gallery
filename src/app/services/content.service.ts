@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Art } from "../models/art.model";
-import rxjs from 
 
 @Injectable()
 export class ContentService {
@@ -14,7 +13,7 @@ export class ContentService {
     constructor() {
     }
 
-    getFeatured(): Promise<Art> {
+    getFeatured(): Art {
         return this.featured;
     }
 
