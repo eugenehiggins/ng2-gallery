@@ -9,23 +9,43 @@ import { JumbotronComponent } from './components/jumbotron/jumbotron.component';
 import { AlbumComponent } from './components/album/album.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ContentService } from "./services/content.service";
+import { FrontPageComponent } from './front-page.component';
+import { RouterModule } from "@angular/router";
+import { DashboardComponent } from './dashboard/dashboard.component';
+
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    JumbotronComponent,
-    AlbumComponent,
-    FooterComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule
-  ],
-  providers: [
-    ContentService
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        NavbarComponent,
+        JumbotronComponent,
+        AlbumComponent,
+        FooterComponent,
+        FrontPageComponent,
+        DashboardComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpModule,
+        RouterModule.forRoot([
+            {
+                path: '',
+                component: FrontPageComponent
+            },
+            {
+                path: 'dashboard',
+                component: DashboardComponent,
+                data: {
+                    name: 'hello there'
+                }
+            }
+        ])
+    ],
+    providers: [
+        ContentService
+    ],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

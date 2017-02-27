@@ -1,14 +1,27 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, PRIMARY_OUTLET, Router, NavigationEnd } from "@angular/router";
+import { Observable } from "rxjs";
 
 @Component({
-  selector: 'navbar',
-  templateUrl: './navbar.component.html'
+    selector: 'navbar',
+    templateUrl: './navbar.component.html'
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+    currentRoute: ActivatedRoute;
+    constructor(private route: ActivatedRoute, private router: Router) {
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+        this.router.events
+            .filter(event => event instanceof NavigationEnd)
+            .subscribe(event => {
+                this.currentRoute = this.route.root;
+                while (this.currentRoute.children[0] !== undefined) {
+                    this.currentRoute = this.currentRoute.children[0];
+                }
+                console.log(this.currentRoute.snapshot.routeConfig.path);
+            })
+    }
 
 }
