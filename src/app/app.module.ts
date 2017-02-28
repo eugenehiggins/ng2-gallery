@@ -12,6 +12,7 @@ import { ContentService } from "./services/content.service";
 import { FrontPageComponent } from './front-page.component';
 import { RouterModule } from "@angular/router";
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { SiteConfigService } from "./services/site-config.service";
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
         ])
     ],
     providers: [
-        ContentService
+        ContentService,
+        SiteConfigService
     ],
     bootstrap: [AppComponent]
 })
