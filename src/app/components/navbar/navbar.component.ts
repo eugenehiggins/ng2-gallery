@@ -1,18 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, PRIMARY_OUTLET, Router, NavigationEnd } from "@angular/router";
 import { Observable } from "rxjs";
+import { SiteConfigService } from "../../services/site-config.service";
 
 @Component({
     selector: 'navbar',
     templateUrl: './navbar.component.html'
 })
 export class NavbarComponent implements OnInit {
+    @Input() siteTitle: string;
+
 
     currentRoute: ActivatedRoute;
-    constructor(private route: ActivatedRoute, private router: Router) {
+    constructor(
+        private route: ActivatedRoute,
+        private router: Router,
+        private siteConfig: SiteConfigService
+    ) {
     }
 
     ngOnInit() {
+
+        this.siteConfig.getSiteTitle()
+            .subscribe( (title) => {
+                this.siteTitle = title.valueOf();
+                console.log("howdy", this.siteTitle);
+            });
+
         this.router.events
             .filter(event => event instanceof NavigationEnd)
             .subscribe(event => {
