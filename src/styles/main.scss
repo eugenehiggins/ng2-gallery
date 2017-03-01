@@ -74,3 +74,10 @@ footer {
 footer p {
   margin-bottom: .25rem;
 }
+
+@media (min-width: 992px) {
+
+    .navbar-toggleable-md .navbar-toggler {
+        display: inline-block;
+    }
+}

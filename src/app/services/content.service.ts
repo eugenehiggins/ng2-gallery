@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Art } from "../models/art.model";
+
 import { Observable } from 'rxjs';
 import { ART } from './mock-art';
 
@@ -14,6 +15,7 @@ export class ContentService {
 
     constructor() {
     }
+
 
     getFeatured(): Observable<Art> {
         return Observable.of(this.featured)
