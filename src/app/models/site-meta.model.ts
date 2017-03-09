@@ -1,4 +1,12 @@
 export class SiteMeta {
-    private siteName : string;
-    private siteDescription : string;
+
+    constructor(
+        public siteName : string,
+        public siteDescription : string
+    ) {}
+
+    static fromJson({ siteName, siteDescription }): SiteMeta {
+        return new SiteMeta( siteName, siteDescription );
+    }
+
 }

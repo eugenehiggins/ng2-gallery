@@ -13,8 +13,10 @@ export class SiteConfigService {
     }
 
     getSiteMeta(): Observable<any> {
-        return this.af.list('/boody/siteMeta').map(results => results[0])
-    }
+        // return this.af.list('/boody/siteMeta').map(SiteMeta.fromJson)
+        return this.af.object('/boody/siteMeta')
 
+
+    }
 
 }
