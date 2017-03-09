@@ -1,4 +1,5 @@
-<form [formGroup]="siteMetaForm" (ngSubmit)="onSave($event)">
-    <input type="" formControlName="siteName" placeholder="the placeholder">
+<form [formGroup]="siteMetaForm" (ngSubmit)="onSave($event)" >
+    <input type="" formControlName="siteName" placeholder="" [ngModel]="meta$?.siteName">
+    <textarea type="" formControlName="siteDescription" [ngModel]="meta$?.siteDescription"></textarea>
     <button type="submit">Save</button>
 </form>

@@ -27,7 +27,6 @@ export class NavbarComponent implements OnInit {
             .subscribe(
                  (meta) => {
                      this.meta$ = meta;
-                     console.log(this.meta$);
                  }
 
             )
