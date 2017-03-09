@@ -3,7 +3,7 @@
         <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
             <ul class="nav nav-pills flex-column">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Overview <span class="sr-only">(current)</span></a>
+                    <a class="nav-link active" [routerLink]="['site-meta']">Site <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Add item</a>
@@ -46,6 +46,9 @@
 
         <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
             <h1>Dashboard</h1>
+            <section class="row">
+                <router-outlet></router-outlet>
+            </section>
 
             <section class="row text-center placeholders">
                 <div class="col-6 col-sm-3 placeholder">

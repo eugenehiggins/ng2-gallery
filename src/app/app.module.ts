@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -14,6 +14,7 @@ import { RouterModule } from "@angular/router";
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SiteConfigService } from "./services/site-config.service";
 import { AngularFireModule } from 'angularfire2';
+import { SiteMetaComponent } from './components/dashboard/components/site-meta/site-meta.component';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyAx0Wo5qiYzps_kReaCLr4AzlhYLFvK-MU",
@@ -31,13 +32,15 @@ export const firebaseConfig = {
         AlbumComponent,
         FooterComponent,
         FrontPageComponent,
-        DashboardComponent
+        DashboardComponent,
+        SiteMetaComponent
     ],
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
         AngularFireModule.initializeApp(firebaseConfig),
+        ReactiveFormsModule,
         RouterModule.forRoot([
             {
                 path: '',
@@ -48,7 +51,11 @@ export const firebaseConfig = {
                 component: DashboardComponent,
                 data: {
                     name: 'hello there'
-                }
+                },
+                children: [
+                    { path: '', redirectTo: 'site-meta', pathMatch: 'full' },
+                    { path: 'site-meta', component: SiteMetaComponent }
+                ]
             }
         ])
     ],
