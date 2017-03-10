@@ -14,9 +14,14 @@ export class SiteConfigService {
 
     getSiteMeta(): Observable<any> {
         // return this.af.list('/boody/siteMeta').map(SiteMeta.fromJson)
-        return this.af.object('/boody/siteMeta')
+        return this.af.object('/boody/siteMeta');
 
 
+    }
+
+    setSiteMeta( val: SiteMeta ): void {
+        const itemObservable = this.af.object('/boody/siteMeta');
+        itemObservable.update(val);
     }
 
 }
