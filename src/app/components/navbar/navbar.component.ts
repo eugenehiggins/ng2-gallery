@@ -23,7 +23,13 @@ export class NavbarComponent implements OnInit {
 
     ngOnInit() {
 
-        this.meta$ = this.siteConfig.getSiteMeta()
+        this.siteConfig.getSiteMeta()
+            .subscribe(
+                 (meta) => {
+                     this.meta$ = meta;
+                 }
+
+            )
 
         this.router.events
             .filter(event => event instanceof NavigationEnd)
