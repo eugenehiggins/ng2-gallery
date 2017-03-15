@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
-import { SiteConfigService } from "../../../../services/site-config.service";
+import { SiteConfigService } from "../../../services/site-config.service";
 import { Observable } from "rxjs";
 import 'rxjs/add/operator/map';
-import { SiteMeta } from "../../../../models/site-meta.model";
+import { SiteMeta } from "../../../models/site-meta.model";
 
 @Component({
     selector: 'site-meta',

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
     selector: 'front-page',
     template: `
+        <navbar></navbar>
         <jumbotron></jumbotron>
         <album></album>
         <my-footer></my-footer>

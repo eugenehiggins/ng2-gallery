@@ -11,10 +11,11 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ContentService } from "./services/content.service";
 import { FrontPageComponent } from './front-page.component';
 import { RouterModule } from "@angular/router";
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { SiteConfigService } from "./services/site-config.service";
 import { AngularFireModule } from 'angularfire2';
-import { SiteMetaComponent } from './components/dashboard/components/site-meta/site-meta.component';
+import { SiteMetaComponent } from './dashboard/components/site-meta/site-meta.component';
+import { AppRoutingModule } from './app-routing.module';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyAx0Wo5qiYzps_kReaCLr4AzlhYLFvK-MU",
@@ -41,23 +42,7 @@ export const firebaseConfig = {
         HttpModule,
         AngularFireModule.initializeApp(firebaseConfig),
         ReactiveFormsModule,
-        RouterModule.forRoot([
-            {
-                path: '',
-                component: FrontPageComponent
-            },
-            {
-                path: 'dashboard',
-                component: DashboardComponent,
-                data: {
-                    name: 'hello there'
-                },
-                children: [
-                    { path: '', redirectTo: 'site-meta', pathMatch: 'full' },
-                    { path: 'site-meta', component: SiteMetaComponent }
-                ]
-            }
-        ])
+        AppRoutingModule
     ],
     providers: [
         ContentService,
