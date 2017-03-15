@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 //import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { FrontPageComponent } from './front-page.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { SiteMetaComponent } from './dashboard/components/site-meta/site-meta.component';
+//import { DashboardComponent } from './dashboard/dashboard.component';
+//import { SiteMetaComponent } from './dashboard/components/site-meta/site-meta.component';
+import { DASHBOARD_ROUTES } from './dashboard/dashboard.module';
 
 const routes: Routes = [
     {
@@ -12,14 +13,10 @@ const routes: Routes = [
     },
     {
         path: 'dashboard',
-        component: DashboardComponent,
         data: {
             name: 'hello there'
         },
-        children: [
-            { path: '', redirectTo: 'site-meta', pathMatch: 'full' },
-            { path: 'site-meta', component: SiteMetaComponent }
-        ]
+        loadChildren: 'app/dashboard/dashboard.module#DashboardModule'
     }
 ];
 

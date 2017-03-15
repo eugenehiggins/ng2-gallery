@@ -11,7 +11,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ContentService } from "./services/content.service";
 import { FrontPageComponent } from './front-page.component';
 import { RouterModule } from "@angular/router";
-import { DashboardComponent } from './dashboard/dashboard.component';
+//import { DashboardComponent } from './dashboard/dashboard.component';
 import { SiteConfigService } from "./services/site-config.service";
 import { AngularFireModule } from 'angularfire2';
 import { SiteMetaComponent } from './dashboard/components/site-meta/site-meta.component';
@@ -33,7 +33,6 @@ export const firebaseConfig = {
         AlbumComponent,
         FooterComponent,
         FrontPageComponent,
-        DashboardComponent,
         SiteMetaComponent
     ],
     imports: [
