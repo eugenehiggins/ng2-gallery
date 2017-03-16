@@ -1,23 +1,9 @@
 body {
-    min-height: 75rem; /* Can be removed; just added for demo purposes */
+    min-height: 75rem;
+    /* Can be removed; just added for demo purposes */
 }
 
 .navbar {
-    margin-bottom: 0;
-}
-
-.navbar {
-    position: relative;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    padding: .5rem 1rem;
     margin-bottom: 0;
 }
 
@@ -26,15 +12,8 @@ body {
     padding-bottom: 6rem;
     margin-bottom: 0;
     background-color: #fff;
-
-    .container {
-        max-width: 40rem;
-    }
     p:last-child {
         margin-bottom: 0;
-    }
-    &.text-center {
-        // background: #bbb url(https://www.conncoll.edu/media/major-images/Art.jpg) no-repeat;
     }
 }
 
@@ -42,15 +21,16 @@ body {
     font-weight: 300;
 }
 
+.jumbotron .container {
+    max-width: 40rem;
+}
+
 .album {
-    min-height: 50rem; /* Can be removed; just added for demo purposes */
+    min-height: 50rem;
+    /* Can be removed; just added for demo purposes */
     padding-top: 3rem;
     padding-bottom: 3rem;
     background-color: #f7f7f7;
-
-    .card {
-        flex-flow: row wrap;
-    }
 }
 
 .card {
@@ -59,10 +39,9 @@ body {
     padding: .75rem;
     margin-bottom: 2rem;
     border: 0;
-}
-
-.card > img {
-    margin-bottom: .75rem;
+    > img {
+        margin-bottom: .75rem;
+    }
 }
 
 .card-text {
@@ -72,15 +51,7 @@ body {
 footer {
     padding-top: 3rem;
     padding-bottom: 3rem;
-}
-
-footer p {
-    margin-bottom: .25rem;
-}
-
-@media (min-width: 992px) {
-
-    .navbar-toggleable-md .navbar-toggler {
-        display: inline-block;
+    p {
+        margin-bottom: .25rem;
     }
 }
