@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { SiteConfigService } from "../services/site-config.service";
+import { Observable } from "rxjs";
+import { SiteMeta } from "../models/site-meta.model";
 
 @Component({
   selector: 'dashboard',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+    meta$: Observable<SiteMeta>;
+
+  constructor(public siteConfig: SiteConfigService) { }
 
   ngOnInit() {
+      this.siteConfig.getSiteMeta()
+          .subscribe(
+              (meta) => {
+                  this.meta$ = meta;
+              }
+
+          )
   }
 
 }
