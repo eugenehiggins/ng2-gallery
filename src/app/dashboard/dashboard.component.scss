@@ -65,6 +65,8 @@ body.modal-open {
 
 .card {
     overflow:hidden;
+    float: none;
+    width: inherit;
 }
 
 .card-block .rotate {

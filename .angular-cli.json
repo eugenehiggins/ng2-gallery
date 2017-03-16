@@ -20,6 +20,7 @@
             "testTsconfig": "tsconfig.spec.json",
             "prefix": "",
             "styles": [
+                "styles/vendor.scss",
                 "styles/main.scss",
                 "styles/dashboard.scss",
                 "styles/font-awesome/font-awesome.scss"
