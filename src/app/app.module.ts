@@ -32,8 +32,7 @@ export const firebaseConfig = {
         JumbotronComponent,
         AlbumComponent,
         FooterComponent,
-        FrontPageComponent,
-        SiteMetaComponent
+        FrontPageComponent
     ],
     imports: [
         BrowserModule,
