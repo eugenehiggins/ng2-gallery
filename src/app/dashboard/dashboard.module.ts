@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { SiteMetaComponent } from './components/site-meta/site-meta.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OverviewComponent } from './components/overview/overview.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
 export const DASHBOARD_ROUTES = [
     {
@@ -18,6 +19,10 @@ export const DASHBOARD_ROUTES = [
             {
                 path: 'site-info',
                 component: SiteMetaComponent
+            },
+            {
+                path: 'file-upload',
+                component: FileUploadComponent
             }
         ]
     },
@@ -38,7 +43,8 @@ export const DASHBOARD_ROUTES = [
     declarations: [
         DashboardComponent,
         SiteMetaComponent,
-        OverviewComponent
+        OverviewComponent,
+        FileUploadComponent
     ]
 })
 export class DashboardModule {

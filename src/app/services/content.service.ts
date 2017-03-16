@@ -13,6 +13,8 @@ export class ContentService {
         imagePath: "art1.jpg"
     }
 
+    private file = "";
+
     constructor() {
     }
 
@@ -27,5 +29,9 @@ export class ContentService {
 
     getArt(): Observable<Art[]> {
         return Observable.of(ART);
+    }
+
+    addImage(): void {
+
     }
 }

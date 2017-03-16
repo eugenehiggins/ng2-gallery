@@ -12,6 +12,11 @@ const routes: Routes = [
         component: FrontPageComponent
     },
     {
+        path: 'front-page',
+        redirectTo: '',
+        pathMatch: 'full'
+    },
+    {
         path: 'dashboard',
         data: {
             name: 'hello there'
