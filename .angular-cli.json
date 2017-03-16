@@ -28,7 +28,8 @@
             "scripts": [
                 "js/jquery.js",
                 "js/tether.js",
-                "js/bootstrap.js"
+                "js/bootstrap.js",
+                "js/dashboard.js"
             ],
             "environmentSource": "environments/environment.ts",
             "environments": {

@@ -11,6 +11,7 @@ import { SiteMeta } from "../models/site-meta.model";
 export class DashboardComponent implements OnInit {
 
     meta$: Observable<SiteMeta>;
+    sidebarIsVisible: boolean = false;
 
   constructor(public siteConfig: SiteConfigService) { }
 
@@ -24,4 +25,17 @@ export class DashboardComponent implements OnInit {
           )
   }
 
+  toggleSidebar(event){
+    this.sidebarIsVisible = !this.sidebarIsVisible;
+      console.log(this.sidebarIsVisible)
+  }
+
 }
+
+// $(document).ready(function() {
+//     alert("howdy");
+//     $('[data-toggle=offcanvas]').click(function() {
+//         $('.row-offcanvas').toggleClass('active');
+//     });
+//
+// });

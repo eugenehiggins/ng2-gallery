@@ -4,7 +4,7 @@
     </button>
     <div class="flex-row d-flex">
         <a class="navbar-brand mb-1" href="#">{{ meta$?.siteName }}</a>
-        <button type="button" class="hidden-md-up navbar-toggler" data-toggle="offcanvas" title="Toggle responsive left sidebar">
+        <button type="button" class="hidden-md-up navbar-toggler" (click)="toggleSidebar()" data-toggle="offcanvas" title="Toggle responsive left sidebar">
             <span class="navbar-toggler-icon"></span>
         </button>
     </div>
@@ -28,7 +28,7 @@
     </div>
 </nav>
 <div class="container-fluid" id="main">
-    <div class="row row-offcanvas row-offcanvas-left">
+    <div [class.active]="sidebarIsVisible" class="row row-offcanvas row-offcanvas-left">
         <div class="col-md-3 col-lg-2 sidebar-offcanvas" id="sidebar" role="navigation">
             <ul class="nav flex-column pl-1">
                 <li class="nav-item"><a class="nav-link" href="#">Overview</a></li>
