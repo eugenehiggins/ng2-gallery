@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Headers } from "@angular/http";
 
 @Component({
   selector: 'file-upload',
@@ -19,8 +20,15 @@ export class FileUploadComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSave() {
-      console.log(this.imageUploadForm.value);
+  onSave(event) {
+      // TODO: only assuming single files right now
+      let file: File = event.target.imagePath.files;
+      let formData:FormData = new FormData();
+      formData.append('loadFile', file, file.name);
+      let headers = new Headers();
+      headers.append('Content-Type', 'multipart/form-data');
+      headers.append('Accept', 'application')
+     console.log( );
   }
 
 }
