@@ -35,7 +35,8 @@ export const DASHBOARD_ROUTES = [
     imports: [
         RouterModule.forChild(DASHBOARD_ROUTES),
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        CommonModule
     ],
     exports: [
         RouterModule

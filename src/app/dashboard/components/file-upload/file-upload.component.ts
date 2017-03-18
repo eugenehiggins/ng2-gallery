@@ -1,6 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { FirebaseApp } from 'angularfire2';
+import 'rxjs/Rx';
+import { ContentService } from "../../../services/content.service";
 
 @Component({
     selector: 'file-upload',
@@ -10,8 +12,13 @@ import { FirebaseApp } from 'angularfire2';
 export class FileUploadComponent implements OnInit {
 
     _firebase: any;
+    success: boolean = false;
 
-    constructor(public fb: FormBuilder, @Inject(FirebaseApp) firebaseApp: any) {
+    constructor(
+        public fb: FormBuilder,
+        @Inject(FirebaseApp) firebaseApp: any,
+        public contentService: ContentService
+    ) {
         this._firebase = firebaseApp;
     }
 
@@ -31,29 +38,26 @@ export class FileUploadComponent implements OnInit {
 
         // get file
         let file: File = event.target.imagePath.files[0];
-        let storage = this._firebase.storage();
-        let storageRef = storage.ref();
+        let name: string = event.target.name;
+        let description: string = event.target.name;
+        let downloadURL: any = {};
+
 
         // create metadata
         let metadata = {
             contentType: "image/jpeg"
         }
 
-        let promise = new Promise((res, rej) => {
-            let uploadTask = this._firebase.storage().ref('images/' + file.name)
-                .put(file, metadata);
-            uploadTask.on('state_changed', function (snapshot) {
-                console.log('file uploaded')
-            }, function (error) {
-                rej(error);
-            }, function () {
-                let downloadURL = uploadTask.snapshot.downloadURL;
-                console.log(downloadURL);
-                res(downloadURL);
-            });
+        this.contentService.uploadImage(file,metadata)
+            .then(
+                (url) => {
+                    downloadURL = url;
+                    this.success = true;
+                    console.log(downloadURL);
+                }
+            )
+        ;
 
-        });
-        return promise;
     }
 
 }

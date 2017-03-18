@@ -13,4 +13,8 @@
     </div>
 
     <button type="submit">Save</button>
+    {{ contentService.uploadMessage | async }}
+    <div *ngIf="success" class="alert alert-success" role="alert">
+        Success
+    </div>
 </form>
