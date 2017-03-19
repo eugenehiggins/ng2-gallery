@@ -43,8 +43,7 @@ export class FileUploadComponent implements OnInit {
         } else {
             this.imageType = "";
         }
-        console.log(this.imageType)
-        console.log(this.imageUploadForm.get('imagePath').valid)
+
 
     }
 
@@ -75,14 +74,18 @@ export class FileUploadComponent implements OnInit {
         // get file
         let file: File = event.target.imagePath.files[0];
         let fileType: string = file.type;
-        let name: string = event.target.name;
-        let description: string = event.target.name;
-        let downloadURL: any = {};
+        let name: string = event.target.name.value;
+        let description: string = event.target.description.value;
+        let downloadURL:URL;
 
 
         // create metadata
         let metadata = {
-            contentType: fileType
+            contentType: fileType,
+            customMetadata: {
+               'name': name,
+                'description': description
+            }
         }
 
         // this.contentService.currentUploadMessage
@@ -95,13 +98,18 @@ export class FileUploadComponent implements OnInit {
         this.contentService.uploadImage(file,metadata)
             .then(
                 (url) => {
-                    downloadURL = url;
-                    this.success = true;
-                    console.log(downloadURL);
+                    //const downloadURL = new URL(JSON.stringify((url)));
+                    //this.success = true;
+                    //this.storeImageInfo(downloadURL,name,description);
                 }
-            )
-        ;
+            );
 
-    }
+    };
+
+    // Called once image is successfully stored.
+    // This saves image metadata: name, description, featured, etc
+    // storeImageInfo(url: URL, name: string, description: string) {
+    //
+    // }
 
 }

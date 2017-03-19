@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { Art } from "../models/art.model";
-import { FirebaseApp } from 'angularfire2';
+import { AngularFireDatabase, FirebaseApp } from 'angularfire2';
 
 
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -17,7 +17,8 @@ export class ContentService {
     }
 
     constructor(
-        @Inject(FirebaseApp) firebaseApp: any
+        @Inject(FirebaseApp) firebaseApp: any,
+        public afdb: AngularFireDatabase
     ) {
         this._firebase = firebaseApp;
     }
@@ -38,7 +39,10 @@ export class ContentService {
     public uploadMessage: BehaviorSubject<string> = new BehaviorSubject("");
     //public _uploadMessage: Observable<string> = this.uploadMessage.asObservable();
 
-    public x = "hello"
+    public createNewArt(downloadURL: URL, name: string, description: string) {
+
+        //console.log(`creating new art: ${downloadURL} ${name} ${description}`)
+    }
 
     uploadImage(file, metadata) {
         let that = this;
@@ -49,12 +53,13 @@ export class ContentService {
             uploadTask.on('state_changed', function (snapshot) {
                 const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                 that.uploadMessage.next('Upload is ' + progress + '% done');
-                //console.log(that.x);
             }, function (error) {
                 rej(error);
             }, function () {
                 this.success = true;
                 let downloadURL = uploadTask.snapshot.downloadURL;
+
+                if ('downloadURL' in uploadTask.snapshot) console.log('yes')
                 res(downloadURL);
             });
 
