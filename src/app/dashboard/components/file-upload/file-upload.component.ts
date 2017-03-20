@@ -3,6 +3,7 @@ import { AbstractControl, AsyncValidatorFn, FormBuilder, FormControl, ValidatorF
 import { FirebaseApp } from 'angularfire2';
 import 'rxjs/Rx';
 import { ContentService } from "../../../services/content.service";
+import { Art } from "../../../models/art.model";
 
 @Component({
     selector: 'file-upload',
@@ -76,7 +77,7 @@ export class FileUploadComponent implements OnInit {
         let fileType: string = file.type;
         let name: string = event.target.name.value;
         let description: string = event.target.description.value;
-        let downloadURL:URL;
+        let downloadURL: string;
 
 
         // create metadata
@@ -92,15 +93,22 @@ export class FileUploadComponent implements OnInit {
         //     .subscribe();
 
         this.contentService.uploadMessage.subscribe(
-            x => this.progress = x
+            progress => this.progress = progress
         )
 
         this.contentService.uploadImage(file,metadata)
             .then(
                 (url) => {
-                    //const downloadURL = new URL(JSON.stringify((url)));
-                    //this.success = true;
-                    //this.storeImageInfo(downloadURL,name,description);
+                    //let url: string = JSON.stringify(url)
+                    this.success = true;
+                    let art = new Art(name, description, JSON.stringify(url));
+                    const promise = this.contentService.saveArt(art)
+                    promise.then(snapshots => {
+                        snapshots.forEach(snapshot => {
+                            console.log(snapshot.key)
+                            console.log(snapshot.val())
+                        });
+                    });
                 }
             );
 
@@ -108,7 +116,7 @@ export class FileUploadComponent implements OnInit {
 
     // Called once image is successfully stored.
     // This saves image metadata: name, description, featured, etc
-    // storeImageInfo(url: URL, name: string, description: string) {
+    // saveArt(url: URL, name: string, description: string) {
     //
     // }
 

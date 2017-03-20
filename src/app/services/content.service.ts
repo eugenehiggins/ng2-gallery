@@ -39,9 +39,21 @@ export class ContentService {
     public uploadMessage: BehaviorSubject<string> = new BehaviorSubject("");
     //public _uploadMessage: Observable<string> = this.uploadMessage.asObservable();
 
-    public createNewArt(downloadURL: URL, name: string, description: string) {
+    public saveArt(art: Art): Promise<any> {
+        //let response = this.afdb.ref('boody/art/').set(art);
+        art.imagePath = "";
+        let promise = new Promise((res, rej) => {
+            let response = this.afdb.list('boody/art/').push(art);
+            response.on('value', function (snapshot) {
+                //console.log(snapshot.val());
+                res(snapshot);
+            }, function(error){
+                rej(error);
+            }, function (snapshot) {
 
-        //console.log(`creating new art: ${downloadURL} ${name} ${description}`)
+            });
+        });
+        return promise;
     }
 
     uploadImage(file, metadata) {
@@ -59,7 +71,6 @@ export class ContentService {
                 this.success = true;
                 let downloadURL = uploadTask.snapshot.downloadURL;
 
-                if ('downloadURL' in uploadTask.snapshot) console.log('yes')
                 res(downloadURL);
             });
 
